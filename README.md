@@ -6,13 +6,16 @@ brief (stored with pgvector for RAG), produces **ads** grounded in the relevant 
 sections, runs an advisory **multimodal image audit** plus human approval flows, and
 traces every AI call to **Langfuse**.
 
+**Live:** https://alicorpchallenge-back.onrender.com · [API docs](https://alicorpchallenge-back.onrender.com/docs)
+
 ## Stack
 
 - **FastAPI** + **uv** (Python 3.13)
 - **SQLAlchemy 2.0 (async)** + **asyncpg** + **pgvector**
 - **Groq** `llama-3.3-70b-versatile` (text) · **Gemini** `gemini-embedding-001` (embeddings, 768-d) · `gemini-flash-latest` (vision)
 - **PyJWT** (HS256) auth with role → module RBAC
-- **Supabase** Postgres + Storage · **Langfuse** observability
+- **Supabase** Postgres + Storage
+- **Langfuse** observability — [traces dashboard](https://us.cloud.langfuse.com/project/cms7945ib00vwad0dkcku4uhg/traces) (requires login)
 
 ## Prerequisites
 
