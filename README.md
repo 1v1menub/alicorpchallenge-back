@@ -10,6 +10,8 @@ traces every AI call to **Langfuse**.
 
 **API:** https://alicorpchallenge-back.onrender.com · [docs](https://alicorpchallenge-back.onrender.com/docs)
 
+**Frontend repo:** https://github.com/1v1menub/alicorpchallenge-front · **Presentación:** [slides.pdf](slides.pdf)
+
 ## Stack
 
 - **FastAPI** + **uv** (Python 3.13)
