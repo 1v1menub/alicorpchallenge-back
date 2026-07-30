@@ -1,0 +1,35 @@
+services:
+  db:
+    image: pgvector/pgvector:pg16
+    container_name: content-suite-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: content_suite
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d content_suite"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # Optional: run the API in a container too (full stack).
+  # For day-to-day dev prefer `docker compose up -d db` + host uvicorn --reload.
+  backend:
+    build: .
+    container_name: content-suite-api
+    env_file: .env
+    environment:
+      # Inside the compose network the DB host is the service name, not localhost.
+      DATABASE_URL: postgresql+asyncpg://postgres:postgres@db:5432/content_suite
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  pgdata:
