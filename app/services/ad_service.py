@@ -173,7 +173,9 @@ async def create_ad(
 
     content = await generate_ad(ad_type, brief_text, structured, chunks)
 
-    ad = ProductAd(manual_id=manual_id, ad_type=ad_type, content=content)
+    ad = ProductAd(
+        manual_id=manual_id, ad_type=ad_type, brief=brief_text or None, content=content
+    )
     session.add(ad)
     await session.commit()
     await session.refresh(ad)

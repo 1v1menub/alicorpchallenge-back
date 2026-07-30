@@ -22,6 +22,7 @@ class AdResponse(BaseModel):
     id: UUID
     manual_id: UUID
     ad_type: AdType
+    brief: str | None
     content: str
     status: AdStatus
     audit_passed: bool | None

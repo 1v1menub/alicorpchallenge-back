@@ -17,14 +17,6 @@ async def init_db() -> None:
     async with engine.begin() as conn:
         await conn.execute(text("CREATE EXTENSION IF NOT EXISTS vector"))
         await conn.run_sync(Base.metadata.create_all)
-        # Lightweight forward-fill for columns added after a table already exists
-        # (no Alembic in this project); no-op on a freshly created table.
-        await conn.execute(
-            text(
-                "ALTER TABLE product_ads "
-                "ADD COLUMN IF NOT EXISTS updated_at timestamp NOT NULL DEFAULT now()"
-            )
-        )
     await _seed()
 
 

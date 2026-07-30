@@ -6,7 +6,9 @@ brief (stored with pgvector for RAG), produces **ads** grounded in the relevant 
 sections, runs an advisory **multimodal image audit** plus human approval flows, and
 traces every AI call to **Langfuse**.
 
-**Live:** https://alicorpchallenge-back.onrender.com · [API docs](https://alicorpchallenge-back.onrender.com/docs)
+**Live app:** https://alicorpchallenge-front.vercel.app
+
+**API:** https://alicorpchallenge-back.onrender.com · [docs](https://alicorpchallenge-back.onrender.com/docs)
 
 ## Stack
 

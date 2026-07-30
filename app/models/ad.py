@@ -19,6 +19,7 @@ class ProductAd(Base):
     )
 
     ad_type: Mapped[AdType] = mapped_column(Enum(AdType, name="ad_type"))
+    brief: Mapped[str | None] = mapped_column(Text, nullable=True)  # creator's brief (Module II input)
     content: Mapped[str] = mapped_column(Text)  # the generated text (Module II)
 
     status: Mapped[AdStatus] = mapped_column(
